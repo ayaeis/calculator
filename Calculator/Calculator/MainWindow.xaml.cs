@@ -20,8 +20,8 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        double  number1 = 0;
-        double number2 = 0;
+        int  number1 = 0;
+        int number2 = 0;
         string operation = "";
         public MainWindow()
         {
@@ -54,7 +54,7 @@ namespace Calculator
             }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void equal(object sender, RoutedEventArgs e)
         {
             if (e.Source is Button button)
             {
@@ -74,6 +74,44 @@ namespace Calculator
                         break;
                 }
 
+            }
+        }
+
+        private void clearEntry(object sender, RoutedEventArgs e)
+        {
+            if (operation == "")
+            {
+                number1 = 0;
+            }
+            else
+            {
+                number2 = 0;
+            }
+            Display.Text = "0";
+        }
+
+        private void clear(object sender, RoutedEventArgs e)
+        {
+            number1 = 0;
+            number2 = 0;
+            operation = "";
+            Display.Text = "0";
+        }
+
+        private void backSpace(object sender, RoutedEventArgs e)
+        {
+            if (e.Source is Button button)
+            {
+                if (operation == "")
+                {
+                    number1 = (number1 / 10);
+                    Display.Text = number1.ToString();
+                }
+                else
+                {
+                    number2 = (number2 / 10);
+                    Display.Text = number2.ToString();
+                }
             }
         }
     }
