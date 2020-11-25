@@ -20,9 +20,9 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        int  number1 = 0;
-        int number2 = 0;
-        string operation = "";
+        int  number1 = 0; // det första numret man skriver in
+        int number2 = 0; // det andra numret man skriver in
+        string operation = ""; // operationen 
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +32,8 @@ namespace Calculator
         {
             if (e.Source is Button button)
             {
+                // Först skriver man första numret, sedan operationen. Seda skriver man andra talet
+                // Alltså då operationen = "", har man fortfarande inte skrivit andra numret, och istälet håller på att skriva första
                 if (operation == "")
                 {
                     number1 = (number1 * 10) + Convert.ToInt32(button.Content) ; 
@@ -79,6 +81,8 @@ namespace Calculator
 
         private void clearEntry(object sender, RoutedEventArgs e)
         {
+            // clear entry är att man tar bort antingen första eller andra, alltså det sista man har skrivit
+            // om operationen = "", det är första numret man vill ta bort, då man har inte ens börjat med andra numret ( den kommer efter man har skrivit operationen)
             if (operation == "")
             {
                 number1 = 0;
@@ -104,6 +108,7 @@ namespace Calculator
             {
                 if (operation == "")
                 {
+                    // om numret delas med 10, blir det ett decimal tal. Sista numret tas då bort eftersom en int är ett heltal
                     number1 = (number1 / 10);
                     Display.Text = number1.ToString();
                 }
