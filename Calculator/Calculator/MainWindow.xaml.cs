@@ -88,20 +88,20 @@ namespace Calculator
                 switch (operation)
                 {
                     case "+":
-                        Display.Text = (number1 + number2).ToString();
-                        result = Convert.ToDouble(Display.Text);
+                        result = number1 + number2;
+                        Display.Text = number1.ToString() + operation + number2.ToString() + " = " + result;
                         break;
                     case "-":
-                        Display.Text = (number1 - number2).ToString();
-                        result = Convert.ToDouble(Display.Text);
+                        result = number1 - number2;
+                        Display.Text = number1.ToString() + operation + number2.ToString() + " = " + result;
                         break;
                     case "x":
-                        Display.Text = (number1 * number2).ToString();
-                        result = Convert.ToDouble(Display.Text);
+                        result = number1 * number2;
+                        Display.Text = number1.ToString() + operation + number2.ToString() + " = " + result;
                         break;
                     case "/":
-                        Display.Text = (number1 / number2).ToString();
-                        result = Convert.ToDouble(Display.Text);
+                        result = number1 / number2;
+                        Display.Text = number1.ToString() + operation + number2.ToString() + " = " + result;
                         break;
                 }
 
