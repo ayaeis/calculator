@@ -20,8 +20,11 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        int  number1 = 0; // det första numret man skriver in
-        int number2 = 0; // det andra numret man skriver in
+        int number11;
+        int number22;
+        double result;
+        double  number1 = 0; // det första numret man skriver in
+        double number2 = 0; // det andra numret man skriver in
         string operation = ""; // operationen 
         public MainWindow()
         {
@@ -36,13 +39,22 @@ namespace Calculator
                 // Alltså då operationen = "", har man fortfarande inte skrivit andra numret, och istälet håller på att skriva första
                 if (operation == "")
                 {
-                    number1 = (number1 * 10) + Convert.ToInt32(button.Content) ; 
-                    Display.Text = number1.ToString();
+                    if (Display.Text == "0")
+                    {
+                        Display.Text = "";
+                    }
+                    Display.Text += button.Content;
+                    number1 = Convert.ToDouble(Display.Text);
                 }
                 else
                 {
-                    number2 = (number2 * 10) + Convert.ToInt32(button.Content);
-                    Display.Text = number2.ToString();
+                    if (Display.Text == "0")
+                    {
+                        Display.Text = "";
+                    }
+                    Display.Text += button.Content;
+                    number2 = Convert.ToDouble(Display.Text);
+
                 }
             }
         }
@@ -51,8 +63,21 @@ namespace Calculator
         {
             if (e.Source is Button button)
             {
-                operation = button.Content.ToString();
-                Display.Text = "0";
+                // ifall ma vill använda resultatet man fick sista gången , blir resultatet "första talet "
+                // 
+                if (operation != "")
+                {
+                    number1 = result;
+                    operation = button.Content.ToString();
+                    number2 = 0;
+                    Display.Text = "";
+                }
+                else
+                {
+                    operation = button.Content.ToString();
+                    Display.Text = "0";
+                }
+
             }
         }
 
@@ -64,15 +89,19 @@ namespace Calculator
                 {
                     case "+":
                         Display.Text = (number1 + number2).ToString();
+                        result = Convert.ToDouble(Display.Text);
                         break;
                     case "-":
                         Display.Text = (number1 - number2).ToString();
+                        result = Convert.ToDouble(Display.Text);
                         break;
                     case "x":
                         Display.Text = (number1 * number2).ToString();
+                        result = Convert.ToDouble(Display.Text);
                         break;
                     case "/":
                         Display.Text = (number1 / number2).ToString();
+                        result = Convert.ToDouble(Display.Text);
                         break;
                 }
 
@@ -109,12 +138,15 @@ namespace Calculator
                 if (operation == "")
                 {
                     // om numret delas med 10, blir det ett decimal tal. Sista numret tas då bort eftersom en int är ett heltal
-                    number1 = (number1 / 10);
+                    
+                    number11 = Convert.ToInt32((number1 / 10));
+                    number1 = number11;
                     Display.Text = number1.ToString();
                 }
                 else
                 {
-                    number2 = (number2 / 10);
+                    number22 = Convert.ToInt32((number2 / 10) - 1);
+                    number2 = number22;
                     Display.Text = number2.ToString();
                 }
             }

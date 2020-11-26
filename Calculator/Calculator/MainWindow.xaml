@@ -22,6 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!-- Talen -->
+        <Button Click="Button_Click" Grid.Column="0" Grid.Row="5" FontSize="40"> , </Button>
         <Button Click="Button_Click" Grid.Column="1" Grid.Row="5" FontSize="40">0</Button>
         <Button Click="Button_Click" Grid.Column="0" Grid.Row="4" FontSize="40">1</Button>
         <Button Click="Button_Click" Grid.Column="1" Grid.Row="4" FontSize="40">2</Button>
